@@ -224,7 +224,7 @@ class Client:
 
      .. code-block:: python
 
-         class JSONSerde(object):
+         class JSONSerde:
              def serialize(self, key, value):
                  if isinstance(value, str):
                      return value, 1
