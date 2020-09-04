@@ -380,10 +380,11 @@ class Client:
         else:
             sock = None
             error = None
+            sockaddr = None
             host, port = self.server
             info = s.getaddrinfo(host, port, s.AF_UNSPEC, s.SOCK_STREAM,
                                  s.IPPROTO_TCP)
-            for family, socktype, proto, _, sockaddr in info:
+            for family, socktype, proto, _, _sockaddr in info:
                 try:
                     sock = s.socket(family, socktype, proto)
                     if self.no_delay:
@@ -397,6 +398,7 @@ class Client:
                         sock.close()
                         sock = None
                 else:
+                    sockaddr = _sockaddr
                     break
 
             if error is not None:
@@ -1125,7 +1127,7 @@ class Client:
             results = []
             buf = b''
             line = None
-            for cmd in cmds:
+            for _ in cmds:
                 try:
                     buf, line = _readline(self.sock, buf)
                 except MemcacheUnexpectedCloseError:
