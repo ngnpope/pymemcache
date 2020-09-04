@@ -14,7 +14,6 @@
 
 import collections
 import contextlib
-import sys
 import threading
 import time
 
@@ -55,7 +54,6 @@ class ObjectPool:
         try:
             yield obj
         except Exception:
-            exc_info = sys.exc_info()
             if not destroy_on_fail:
                 self.release(obj)
             else:
