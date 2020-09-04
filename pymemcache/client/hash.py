@@ -225,7 +225,7 @@ class HashClient:
 
             return default_val
         except Exception:
-            # any exceptions that aren't socket.error we need to handle
+            # any exceptions that aren't OSError we need to handle
             # gracefully as well
             if not self.ignore_exc:
                 raise
@@ -284,7 +284,7 @@ class HashClient:
 
             return list(set(values.keys()) - set(succeeded))
         except Exception:
-            # any exceptions that aren't socket.error we need to handle
+            # any exceptions that aren't OSError we need to handle
             # gracefully as well
             if not self.ignore_exc:
                 raise
