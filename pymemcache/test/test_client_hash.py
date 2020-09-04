@@ -339,7 +339,7 @@ class TestHashClient(ClientTestMixin, unittest.TestCase):
         assert len(result) == 1
 
     def test_server_encoding_pooled(self):
-        """test passed encoding from hash client to pooled clients"""
+        """Test passed encoding from hash client to pooled clients"""
         encoding = 'utf8'
         from pymemcache.client.hash import HashClient
         hash_client = HashClient(
@@ -351,7 +351,7 @@ class TestHashClient(ClientTestMixin, unittest.TestCase):
             assert client.encoding == encoding
 
     def test_server_encoding_client(self):
-        """test passed encoding from hash client to clients"""
+        """Test passed encoding from hash client to clients"""
         encoding = 'utf8'
         from pymemcache.client.hash import HashClient
         hash_client = HashClient(
