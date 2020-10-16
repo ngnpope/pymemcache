@@ -48,7 +48,7 @@ def _python_memcache_serializer(key, value, pickle_version=None):
 
     elif value_type is int:
         flags |= FLAG_INTEGER
-        value = "%d" % value
+        value = f"{value:d}"
 
     else:
         flags |= FLAG_PICKLE

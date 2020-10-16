@@ -860,7 +860,8 @@ class Client:
 
         if before != b'VERSION':
             raise MemcacheUnknownError(
-                "Received unexpected response: %s" % results[0])
+                f"Received unexpected response: {results[0]}"
+            )
         return after
 
     def flush_all(self, delay=0, noreply=None):
@@ -1079,7 +1080,7 @@ class Client:
                     data = str(data).encode(self.encoding)
                 except UnicodeEncodeError as e:
                     raise MemcacheIllegalInputError(
-                        "Data values must be binary-safe: %s" % e,
+                        f"Data values must be binary-safe: {e}",
                     ) from e
 
             cmds.append(name + b' ' + key + b' ' +
