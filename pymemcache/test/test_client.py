@@ -1205,6 +1205,7 @@ class TestClientSocketConnect(unittest.TestCase):
             client = Client(server)
             client._connect()
             assert client.sock.family == socket.AF_UNIX
+            client.close()
 
     @unittest.skipIf('Linux' != platform.system(),
                      'Socket keepalive only support Linux platforms.')
